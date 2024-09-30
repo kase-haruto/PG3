@@ -3,7 +3,7 @@
 
 int main(){
 
-    char str[] = "ソ";
+    char str[] = "こんばんは！！";
     printf("%s", str);
 
 
