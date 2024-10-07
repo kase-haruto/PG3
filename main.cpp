@@ -2,7 +2,8 @@
 
 int main(){
 
-	// 終了前にキー入力待ち
-	std::cin.get();
+
+
+	system("pause");
 	return 0;
 }
