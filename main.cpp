@@ -1,24 +1,27 @@
 #include <iostream>
-#include <type_traits>
 #include <vector>
 #include <memory>
+#include <cmath>
 
 /////////////////////////////////////////////////////////////////////////////////////////
 //                  インターフェース
 /////////////////////////////////////////////////////////////////////////////////////////
 
 /// <summary>
-/// 家電製品のインターフェースクラス
+/// 形状のインターフェースクラス
 /// </summary>
-class IConsumerElectronics{
+class IShape{
 public:
-	IConsumerElectronics() = default;
-	virtual ~IConsumerElectronics() = default;
+	virtual ~IShape() = default;
 
-	virtual void Update() = 0;
+	// 面積計算
+	virtual void Size() = 0;
+	// 面積の表示
+	virtual void Draw() const = 0;
 
-private:
-
+protected:
+	// 面積を保存するメンバ変数
+	float area_ = 0.0f;
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -26,56 +29,73 @@ private:
 /////////////////////////////////////////////////////////////////////////////////////////
 
 /// <summary>
-/// 冷蔵庫クラス
+/// 円クラス
 /// </summary>
-class Refrigerator:
-	public IConsumerElectronics{
+class Circle : public IShape{
 public:
-	Refrigerator() = default;
-	~Refrigerator()override = default;
+	void Size() override;
 
-
-	void Update()override;
+	void Draw() const override{
+		std::cout << "円の面積は " << area_ << " です。\n" << std::endl;
+	}
 };
-
 
 /// <summary>
-/// 電子レンジクラス
+/// 長方形クラス
 /// </summary>
-class Microwave:
-public IConsumerElectronics{
+class Rectangle : public IShape{
 public:
-	Microwave() = default;
-	~Microwave()override = default;
+	void Size() override;
 
-	void Update()override;
+	void Draw() const override{
+		std::cout << "長方形の面積は " << area_ << " です。\n" << std::endl;
+	}
 };
-
 
 /////////////////////////////////////////////////////////////////////////////////////////
 //                  main
 /////////////////////////////////////////////////////////////////////////////////////////
 
 int main(){
-	std::vector<std::unique_ptr<IConsumerElectronics>> electronics;
-	//冷蔵庫
-	electronics.emplace_back(std::make_unique<Refrigerator>());
-	//電子レンジ
-	electronics.emplace_back(std::make_unique<Microwave>());
+	std::vector<std::unique_ptr<IShape>> shapes;
 
-	for (size_t i = 0; i < 2; i++){
-		electronics[i]->Update();
+	// 円と長方形を追加
+	shapes.emplace_back(std::make_unique<Circle>());
+	shapes.emplace_back(std::make_unique<Rectangle>());
+
+	// 各形状に対してSizeとDrawメソッドを呼び出す
+	for (const auto& shape : shapes){
+		shape->Size();
+		shape->Draw();
 	}
 
-    // プログラムの終了前に一時停止
-    std::cin.get();
+	// プログラム終了前に一時停止
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	std::cin.get();
 	return 0;
 }
 
-void Refrigerator::Update(){
-	std::cout << "冷やしています。" << std::endl;
+
+/////////////////////////////////////////////////////////////////////////////////////////
+//                  function
+/////////////////////////////////////////////////////////////////////////////////////////
+
+void Circle::Size(){
+	float radius;
+	std::cout << "円の半径を入力してください: ";
+	std::cin >> radius;
+
+	// 円の面積を計算
+	area_ = 3.14159f * std::pow(radius, 2);
 }
 
-void Microwave::Update(){
-	std::cout << "温めています。" << std::endl;
+void Rectangle::Size(){
+	float width, height;
+	std::cout << "長方形の幅を入力してください: ";
+	std::cin >> width;
+	std::cout << "長方形の高さを入力してください: ";
+	std::cin >> height;
+
+	// 長方形の面積を計算
+	area_ = width * height;
 }
