@@ -6,7 +6,6 @@ int main(){
 
 	enemy.Update();
 
-
 	system("pause");
 	return 0;
 }
