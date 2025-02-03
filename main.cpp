@@ -4,11 +4,11 @@
 #include <memory>
 
 /////////////////////////////////////////////////////////////////////////////////////////
-//                  �C���^�[�t�F�[�X
+//                  インターフェース
 /////////////////////////////////////////////////////////////////////////////////////////
 
 /// <summary>
-/// �Ɠd���i�̃C���^�[�t�F�[�X�N���X
+/// 家電製品のインターフェースクラス
 /// </summary>
 class IConsumerElectronics{
 public:
@@ -22,11 +22,11 @@ private:
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////
-//                  �h���N���X
+//                  派生クラス
 /////////////////////////////////////////////////////////////////////////////////////////
 
 /// <summary>
-/// �①�ɃN���X
+/// 冷蔵庫クラス
 /// </summary>
 class Refrigerator:
 	public IConsumerElectronics{
@@ -40,7 +40,7 @@ public:
 
 
 /// <summary>
-/// �d�q�����W�N���X
+/// 電子レンジクラス
 /// </summary>
 class Microwave:
 public IConsumerElectronics{
@@ -58,24 +58,24 @@ public:
 
 int main(){
 	std::vector<std::unique_ptr<IConsumerElectronics>> electronics;
-	//�①��
+	//冷蔵庫
 	electronics.emplace_back(std::make_unique<Refrigerator>());
-	//�d�q�����W
+	//電子レンジ
 	electronics.emplace_back(std::make_unique<Microwave>());
 
 	for (size_t i = 0; i < 2; i++){
 		electronics[i]->Update();
 	}
 
-    // �v���O�����̏I���O�Ɉꎞ��~
+    // プログラムの終了前に一時停止
     std::cin.get();
 	return 0;
 }
 
 void Refrigerator::Update(){
-	std::cout << "��₵�Ă��܂��B" << std::endl;
+	std::cout << "冷やしています。" << std::endl;
 }
 
 void Microwave::Update(){
-	std::cout << "���߂Ă��܂��B" << std::endl;
+	std::cout << "温めています。" << std::endl;
 }
