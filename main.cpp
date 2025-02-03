@@ -2,7 +2,7 @@
 #include <type_traits>
 
 /////////////////////////////////////////////////////////////////////////////////////////
-//                  ”’l‚Ì”äŠr
+//                  æ•°å€¤ã®æ¯”è¼ƒ
 /////////////////////////////////////////////////////////////////////////////////////////
 template<typename T1, typename T2>
 class Comparison{
@@ -10,7 +10,7 @@ public:
     Comparison() = default;
     ~Comparison() = default;
 
-    // Minƒƒ\ƒbƒh‚ÅˆÙ‚È‚éŒ^“¯m‚ğ”äŠr
+    // Minãƒ¡ã‚½ãƒƒãƒ‰ã§ç•°ãªã‚‹å‹åŒå£«ã‚’æ¯”è¼ƒ
     auto Min(T1 val1, T2 val2) const;
 };
 
@@ -34,7 +34,7 @@ int main(){
     float floatVal = 4.0f;
     double doubleVal = 1.0;
 
-    // ˆÙ‚È‚é•û‚Å”äŠr
+    // ç•°ãªã‚‹æ–¹ã§æ¯”è¼ƒ
     Comparison<int, float> intFloatComparison;
     Comparison<float, double> floatDoubleComparison;
     Comparison<int, double> intDoubleComparison;
@@ -43,7 +43,7 @@ int main(){
     std::cout << "float and double Min: " << floatDoubleComparison.Min(floatVal, doubleVal) << std::endl;
     std::cout << "int and double Min: " << intDoubleComparison.Min(intVal, doubleVal) << std::endl;
 
-    // ƒvƒƒOƒ‰ƒ€‚ÌI—¹‘O‚Éˆê’â~
+    // ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®çµ‚äº†å‰ã«ä¸€æ™‚åœæ­¢
     std::cin.get();
 
     return 0;
