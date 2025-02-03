@@ -1,21 +1,21 @@
 #include <iostream>
 
-//ˆê”Ê“I‚È’À‹àŒ`‘Ô‚Ìê‡‚Ì’À‹à
+//ä¸€èˆ¬çš„ãªè³ƒé‡‘å½¢æ…‹ã®å ´åˆã®è³ƒé‡‘
 int CalculateWage(int hour){
 	return 1072 * hour;
 }
 
-//Ä‹A“I‚È’À‹àŒ`‘Ô
+//å†å¸°çš„ãªè³ƒé‡‘å½¢æ…‹
 int RecursiveWage(int hour){
-	// Å‰‚Ì1ŠÔ‚Ì‹‹‚Í100‰~
+	// æœ€åˆã®1æ™‚é–“ã®æ™‚çµ¦ã¯100å††
 	if (hour == 1){
 		return 100;
 	}
-	// limitTime‚ª2ŠÔˆÈã‚Ìê‡‚Ì’À‹àŒvZ
+	// limitTimeãŒ2æ™‚é–“ä»¥ä¸Šã®å ´åˆã®è³ƒé‡‘è¨ˆç®—
 	return RecursiveWage(hour - 1) * 2 - 50;
 }
 
-// ‡Œv’À‹à‚ğŒvZ‚·‚éŠÖ”
+// åˆè¨ˆè³ƒé‡‘ã‚’è¨ˆç®—ã™ã‚‹é–¢æ•°
 int CalculateTotalRecursiveWage(int hours){
 	int totalWage = 0;
 	for (int hour = 1; hour <= hours; ++hour){
@@ -27,18 +27,18 @@ int CalculateTotalRecursiveWage(int hours){
 int main(){
 	int workingHours = 8;
 
-	printf("˜J“­ŠÔ‚Í%dŠÔ\n",workingHours);
-	printf("ˆê”Ê“I‚È’À‹àŒ`‘Ô:%d\n", CalculateWage(workingHours));
-	printf("Ä‹A“I‚È’À‹àŒ`‘Ô:%d\n", CalculateTotalRecursiveWage(workingHours));
+	printf("åŠ´åƒæ™‚é–“ã¯%dæ™‚é–“\n",workingHours);
+	printf("ä¸€èˆ¬çš„ãªè³ƒé‡‘å½¢æ…‹:%d\n", CalculateWage(workingHours));
+	printf("å†å¸°çš„ãªè³ƒé‡‘å½¢æ…‹:%d\n", CalculateTotalRecursiveWage(workingHours));
 	
 	if (CalculateWage(workingHours)> CalculateTotalRecursiveWage(workingHours)){
-		printf("%s\n", "ˆê”Ê“I‚È’À‹àŒ`‘Ô‚Ì‚Ù‚¤‚ª‚’À‹à");
+		printf("%s\n", "ä¸€èˆ¬çš„ãªè³ƒé‡‘å½¢æ…‹ã®ã»ã†ãŒé«˜è³ƒé‡‘");
 	} else{
-		printf("%s\n", "Ä‹A“I‚È’À‹àŒ`‘Ô‚Ì‚Ù‚¤‚ª‚’À‹à");
+		printf("%s\n", "å†å¸°çš„ãªè³ƒé‡‘å½¢æ…‹ã®ã»ã†ãŒé«˜è³ƒé‡‘");
 	}
 	
 
-	// I—¹‘O‚ÉƒL[“ü—Í‘Ò‚¿
+	// çµ‚äº†å‰ã«ã‚­ãƒ¼å…¥åŠ›å¾…ã¡
 	std::cin.get();
 	return 0;
 }
