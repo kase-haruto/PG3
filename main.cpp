@@ -9,38 +9,38 @@ int main(){
     const size_t kStringLength = 100000;
     std::string originalString(kStringLength, 'a');
 
-    // Œv‘ªŠJn‚ß‚Á‚¹[‚¶
-    std::cout << kStringLength << "•¶š‚ğˆÚ“®‚ÆƒRƒs[‚Å”äŠr‚µ‚Ü‚µ‚½B\n";
+    // è¨ˆæ¸¬é–‹å§‹ã‚ã£ã›ãƒ¼ã˜
+    std::cout << kStringLength << "æ–‡å­—ã‚’ç§»å‹•ã¨ã‚³ãƒ”ãƒ¼ã§æ¯”è¼ƒã—ã¾ã—ãŸã€‚\n";
 
     // -----------------------------
-    // copy ‚É‚©‚©‚éŠÔ
+    // copy ã«ã‹ã‹ã‚‹æ™‚é–“
     // -----------------------------
     auto copyStart = std::chrono::high_resolution_clock::now();
-    // ƒRƒs[ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+    // ã‚³ãƒ”ãƒ¼ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
     std::string copyConstructedString = originalString;
     auto copyEnd = std::chrono::high_resolution_clock::now();
 
-    // duration_cast ‚Åƒ}ƒCƒNƒ•b’PˆÊ‚Ì®”‚É•ÏŠ·‚µ‚Äæ“¾
+    // duration_cast ã§ãƒã‚¤ã‚¯ãƒ­ç§’å˜ä½ã®æ•´æ•°ã«å¤‰æ›ã—ã¦å–å¾—
     auto copyTime = std::chrono::duration_cast< std::chrono::microseconds >(
         copyEnd - copyStart).count();
 
     // -----------------------------
-    // move ‚É‚©‚©‚éŠÔ
+    // move ã«ã‹ã‹ã‚‹æ™‚é–“
     // -----------------------------
     auto moveStart = std::chrono::high_resolution_clock::now();
-    // ƒ€[ƒuƒRƒ“ƒXƒgƒ‰ƒNƒ^
+    // ãƒ ãƒ¼ãƒ–ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
     std::string moveConstructedString = std::move(originalString);
     auto moveEnd = std::chrono::high_resolution_clock::now();
 
     auto moveTime = std::chrono::duration_cast< std::chrono::microseconds >(
         moveEnd - moveStart).count();
 
-    // Œ‹‰Ê‚Ìo—Í
-    std::cout << "ƒRƒs[: " << copyTime << "us\n";
-    std::cout << "ˆÚ“®: " << moveTime << "us\n";
+    // çµæœã®å‡ºåŠ›
+    std::cout << "ã‚³ãƒ”ãƒ¼: " << copyTime << "us\n";
+    std::cout << "ç§»å‹•: " << moveTime << "us\n";
 
-    // ƒvƒƒOƒ‰ƒ€‚ÌI—¹‘O‚Éˆê’â~
-    std::cout << "‘±s‚·‚é‚É‚Í‰½‚©ƒL[‚ğ‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢EEE";
+    // ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®çµ‚äº†å‰ã«ä¸€æ™‚åœæ­¢
+    std::cout << "ç¶šè¡Œã™ã‚‹ã«ã¯ä½•ã‹ã‚­ãƒ¼ã‚’æŠ¼ã—ã¦ãã ã•ã„ãƒ»ãƒ»ãƒ»";
     std::cin.get();
 
     return 0;
