@@ -8,21 +8,21 @@
 
 std::mutex mtx;
 std::condition_variable cv;
-int currentStep = 1; // Œ»İ‚ÌƒXƒeƒbƒv”Ô†‚ğŠÇ—
+int currentStep = 1; // ç¾åœ¨ã®ã‚¹ãƒ†ãƒƒãƒ—ç•ªå·ã‚’ç®¡ç†
 
-// ŠeƒXƒŒƒbƒh‚ª‡”Ô‚ÉƒƒbƒZ[ƒW‚ğ•\¦‚·‚éŠÖ”
+// å„ã‚¹ãƒ¬ãƒƒãƒ‰ãŒé †ç•ªã«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤ºã™ã‚‹é–¢æ•°
 void printInOrder(int myStep, const std::string& msg){
     std::unique_lock<std::mutex> lock(mtx);
-    // ©•ª‚Ì‡”Ô‚ª—ˆ‚é‚Ü‚Å‘Ò‚Â
+    // è‡ªåˆ†ã®é †ç•ªãŒæ¥ã‚‹ã¾ã§å¾…ã¤
     cv.wait(lock, [&] (){ return currentStep == myStep; });
 
-    // ƒƒbƒZ[ƒW‚ğ•\¦
+    // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤º
     std::cout << msg << std::endl;
 
-    // Ÿ‚ÌƒXƒeƒbƒv‚Éi‚Ş
+    // æ¬¡ã®ã‚¹ãƒ†ãƒƒãƒ—ã«é€²ã‚€
     currentStep++;
 
-    // Ÿ‚ÌƒXƒŒƒbƒh‚ğ‹N‚±‚·
+    // æ¬¡ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’èµ·ã“ã™
     cv.notify_all();
 }
 
@@ -30,17 +30,17 @@ void printInOrder(int myStep, const std::string& msg){
 //                  main
 /////////////////////////////////////////////////////////////////////////////////////////
 int main(){
-    // ƒXƒŒƒbƒh‚ğ¶¬
+    // ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’ç”Ÿæˆ
     std::thread t1(printInOrder, 1, "thread 1");
     std::thread t2(printInOrder, 2, "thread 2");
     std::thread t3(printInOrder, 3, "thread 3");
 
-    // ƒXƒŒƒbƒh‚ÌI—¹‚ğ‘Ò‚Â
+    // ã‚¹ãƒ¬ãƒƒãƒ‰ã®çµ‚äº†ã‚’å¾…ã¤
     t1.join();
     t2.join();
     t3.join();
 
-    // ƒvƒƒOƒ‰ƒ€I—¹‘O‚Éˆê’â~
+    // ãƒ—ãƒ­ã‚°ãƒ©ãƒ çµ‚äº†å‰ã«ä¸€æ™‚åœæ­¢
     std::cin.get();
     return 0;
 }
