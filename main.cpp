@@ -10,7 +10,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////
 
 
-// ŠwĞ”Ô†‡‚Éƒ[ƒ‹ƒAƒhƒŒƒX‚ğ•\¦‚·‚éŠÖ”
+// å­¦ç±ç•ªå·é †ã«ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¡¨ç¤ºã™ã‚‹é–¢æ•°
 void DisplayAddress(const std::vector<std::string>& address){
 	for (const auto& email : address){
 		std::cout << email << std::endl;
@@ -18,7 +18,7 @@ void DisplayAddress(const std::vector<std::string>& address){
 }
 
 int main(){
-	// ƒAƒhƒŒƒX‚Ì‰ŠúƒŠƒXƒg
+	// ã‚¢ãƒ‰ãƒ¬ã‚¹ã®åˆæœŸãƒªã‚¹ãƒˆ
 	std::vector<std::string> address = {
 		"k022g0108@g.neec.ac.jp", "k022g0045@g.neec.ac.jp", "k022g0007@g.neec.ac.jp",
 		"k022g0015@g.neec.ac.jp", "k022g0028@g.neec.ac.jp", "k022g0049@g.neec.ac.jp",
@@ -61,14 +61,14 @@ int main(){
 		"k022g0074@g.neec.ac.jp", "k022g0012@g.neec.ac.jp", "k022g0001@g.neec.ac.jp"
 	};
 
-	// ƒ[ƒ‹ƒAƒhƒŒƒX‚ğŠwĞ”Ô†‡‚Éƒ\[ƒg
+	// ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å­¦ç±ç•ªå·é †ã«ã‚½ãƒ¼ãƒˆ
 	std::sort(address.begin(), address.end());
 
-	// ƒ\[ƒgŒã‚Ìƒ[ƒ‹ƒAƒhƒŒƒX‚ğ•\¦
+	// ã‚½ãƒ¼ãƒˆå¾Œã®ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¡¨ç¤º
 	std::cout << "Sorted address:" << std::endl;
 	DisplayAddress(address);
 
-	// ƒvƒƒOƒ‰ƒ€‚ÌI—¹‘O‚Éˆê’â~
+	// ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®çµ‚äº†å‰ã«ä¸€æ™‚åœæ­¢
 	std::cin.get();
 	return 0;
 }
