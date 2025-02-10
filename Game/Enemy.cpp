@@ -5,7 +5,7 @@
 #include <chrono>
 
 void Enemy::Update(){
-    // Šes“®‚ğ2•b‚²‚Æ‚É1‰ñ‚¸‚ÂÀs‚·‚é
+    // å„è¡Œå‹•ã‚’2ç§’ã”ã¨ã«1å›ãšã¤å®Ÿè¡Œã™ã‚‹
     for (int i = 0; i < 3; ++i){
         (this->*pFuncTable[i])();
         std::this_thread::sleep_for(std::chrono::seconds(transitionTime_));
@@ -13,20 +13,20 @@ void Enemy::Update(){
 }
 
 void Enemy::Approach(){
-    std::cout << "Ú‹ß’†" << std::endl;
+    std::cout << "æ¥è¿‘ä¸­" << std::endl;
 }
 
 void Enemy::Attack(){
-    std::cout << "UŒ‚’†" << std::endl;
+    std::cout << "æ”»æ’ƒä¸­" << std::endl;
 }
 
 void Enemy::Withdrawal(){
-    std::cout << "—£’E’†" << std::endl;
+    std::cout << "é›¢è„±ä¸­" << std::endl;
 }
 
-// ƒƒ“ƒoŠÖ”ƒ|ƒCƒ“ƒ^‚Ì‰Šú‰»
+// ãƒ¡ãƒ³ãƒé–¢æ•°ãƒã‚¤ãƒ³ã‚¿ã®åˆæœŸåŒ–
 void (Enemy::* Enemy::pFuncTable[])() = {
-    &Enemy::Approach,   // Œü‚©‚Á‚Ä‚«‚Ä‚¢‚é
-    &Enemy::Attack,     // UŒ‚’†
-    &Enemy::Withdrawal  // —£’E’†
+    &Enemy::Approach,   // å‘ã‹ã£ã¦ãã¦ã„ã‚‹
+    &Enemy::Attack,     // æ”»æ’ƒä¸­
+    &Enemy::Withdrawal  // é›¢è„±ä¸­
 };

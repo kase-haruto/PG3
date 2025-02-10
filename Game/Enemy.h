@@ -2,9 +2,9 @@
 #include <cstdint>
 
 enum class Behavior{
-	APPROACH,	//Œü‚©‚Á‚Ä‚­‚é
-	ATTACK,		//UŒ‚
-	WITHDRAWL,	//—£’E
+	APPROACH,	//å‘ã‹ã£ã¦ãã‚‹
+	ATTACK,		//æ”»æ’ƒ
+	WITHDRAWL,	//é›¢è„±
 };
 
 class Enemy{
@@ -13,29 +13,29 @@ public:
 	~Enemy() = default;
 
 	/// <summary>
-	/// Ú‹ß
+	/// æ¥è¿‘
 	/// </summary>
 	void Approach();
 
 	/// <summary>
-	/// UŒ‚
+	/// æ”»æ’ƒ
 	/// </summary>
 	void Attack();
 
 	/// <summary>
-	/// —£’E
+	/// é›¢è„±
 	/// </summary>
 	void Withdrawal();
 
 	/// <summary>
-	/// XV
+	/// æ›´æ–°
 	/// </summary>
 	void Update();
 
 private:
-	//ƒƒ“ƒoŠÖ”ƒ|ƒCƒ“ƒ^
+	//ãƒ¡ãƒ³ãƒé–¢æ•°ãƒã‚¤ãƒ³ã‚¿
 	static void (Enemy::* pFuncTable[])();
 
 private:
-	uint32_t transitionTime_ = 2;	//2•b‚Å‘JˆÚ
+	uint32_t transitionTime_ = 2;	//2ç§’ã§é·ç§»
 };
