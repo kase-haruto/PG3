@@ -3,22 +3,22 @@
 #include <ctime>
 #include <functional>
 
-// ”»’èŒ‹‰Ê‚ğ•\¦‚·‚éƒR[ƒ‹ƒoƒbƒNŠÖ”
+// åˆ¤å®šçµæœã‚’è¡¨ç¤ºã™ã‚‹ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯é–¢æ•°
 void JudgeResult(int diceNumber, int userGuess){
-    // o–Ú‚ª‹ô”‚©Šï”‚©‚ğ”»’è
+    // å‡ºç›®ãŒå¶æ•°ã‹å¥‡æ•°ã‹ã‚’åˆ¤å®š
     bool isEven = (diceNumber % 2 == 0);
 
-    // ƒ†[ƒU[‚Ì—\‘z‚Æo–Ú‚Ì‹ôŠï‚ªˆê’v‚·‚é‚©‚ğ”»’è
+    // ãƒ¦ãƒ¼ã‚¶ãƒ¼ã®äºˆæƒ³ã¨å‡ºç›®ã®å¶å¥‡ãŒä¸€è‡´ã™ã‚‹ã‹ã‚’åˆ¤å®š
     if ((isEven && userGuess == 2) || (!isEven && userGuess == 1)){
-        printf("³‰ğIƒTƒCƒRƒ‚Ìo–Ú‚Í %d ‚Å‚µ‚½B\n", diceNumber);
+        printf("æ­£è§£ï¼ã‚µã‚¤ã‚³ãƒ­ã®å‡ºç›®ã¯ %d ã§ã—ãŸã€‚\n", diceNumber);
     } else{
-        printf("•s³‰ğBƒTƒCƒRƒ‚Ìo–Ú‚Í %d ‚Å‚µ‚½B\n", diceNumber);
+        printf("ä¸æ­£è§£ã€‚ã‚µã‚¤ã‚³ãƒ­ã®å‡ºç›®ã¯ %d ã§ã—ãŸã€‚\n", diceNumber);
     }
 }
 
-// ƒTƒCƒRƒ‚Ìo–Ú‚ğƒ‰ƒ“ƒ_ƒ€‚É¶¬
+// ã‚µã‚¤ã‚³ãƒ­ã®å‡ºç›®ã‚’ãƒ©ãƒ³ãƒ€ãƒ ã«ç”Ÿæˆ
 int RollDice(){
-    // ƒ‰ƒ“ƒ_ƒ€ƒfƒoƒCƒX‚Ìì¬
+    // ãƒ©ãƒ³ãƒ€ãƒ ãƒ‡ãƒã‚¤ã‚¹ã®ä½œæˆ
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> dist(1, 6);
@@ -26,40 +26,40 @@ int RollDice(){
 }
 
 
-// w’è‚µ‚½•b”‚¾‚¯‘Ò‹@‚µ‚ÄAŠÖ”‚ğÀs
+// æŒ‡å®šã—ãŸç§’æ•°ã ã‘å¾…æ©Ÿã—ã¦ã€é–¢æ•°ã‚’å®Ÿè¡Œ
 void SetTimeout(std::function<void(int, int)> func, int seconds, int diceNumber, int userGuess){
     clock_t start_time = clock();
-    // w’è‚³‚ê‚½ŠÔ‚ªŒo‰ß‚·‚é‚Ü‚Å‘Ò‹@
+    // æŒ‡å®šã•ã‚ŒãŸæ™‚é–“ãŒçµŒéã™ã‚‹ã¾ã§å¾…æ©Ÿ
     while ((clock() - start_time) / CLOCKS_PER_SEC < seconds);
 
-    // w’è‚µ‚½ŠÔ‚ªŒo‰ß‚µ‚½‚çŠÖ”‚ğÀs‚·‚é
+    // æŒ‡å®šã—ãŸæ™‚é–“ãŒçµŒéã—ãŸã‚‰é–¢æ•°ã‚’å®Ÿè¡Œã™ã‚‹
     func(diceNumber, userGuess);
 }
 
 
 int main(){
-    // ŒJ‚è•Ô‚µƒvƒŒƒC‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒO
+    // ç¹°ã‚Šè¿”ã—ãƒ—ãƒ¬ã‚¤ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°
     char playAgain = 'y';
 
-    // ”»’èŒ‹‰Ê
+    // åˆ¤å®šçµæœ
     std::function<void(int, int)> result = [] (int diceNumber, int userGuess){JudgeResult(diceNumber, userGuess); };
 
-    //y‚ğ‰Ÿ‚µ‚½‚çŒJ‚è•Ô‚µ—V‚×‚é
+    //yã‚’æŠ¼ã—ãŸã‚‰ç¹°ã‚Šè¿”ã—éŠã¹ã‚‹
     while (playAgain == 'y'){
-        // ƒ†[ƒU[‚Ì“ü—Í‚ğæ“¾
-        std::cout << "ƒTƒCƒRƒ‚Ìo–Ú‚ªŠï”‚È‚ç 1A‹ô”‚È‚ç 2 ‚Æ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢: ";
+        // ãƒ¦ãƒ¼ã‚¶ãƒ¼ã®å…¥åŠ›ã‚’å–å¾—
+        std::cout << "ã‚µã‚¤ã‚³ãƒ­ã®å‡ºç›®ãŒå¥‡æ•°ãªã‚‰ 1ã€å¶æ•°ãªã‚‰ 2 ã¨å…¥åŠ›ã—ã¦ãã ã•ã„: ";
         int userGuess;
         std::cin >> userGuess;
 
-        // ƒTƒCƒRƒ‚Ìo–Ú‚ğŒˆ’è
+        // ã‚µã‚¤ã‚³ãƒ­ã®å‡ºç›®ã‚’æ±ºå®š
         int diceNumber = RollDice();
 
-        std::cout << "ƒTƒCƒRƒ‚ğU‚Á‚Ä‚¢‚Ü‚·..." << std::endl;
-        //3•b‘Ò‹@‚µ‚ÄŒ‹‰Ê‚ğ•\¦
+        std::cout << "ã‚µã‚¤ã‚³ãƒ­ã‚’æŒ¯ã£ã¦ã„ã¾ã™..." << std::endl;
+        //3ç§’å¾…æ©Ÿã—ã¦çµæœã‚’è¡¨ç¤º
         SetTimeout(result, 3, diceNumber, userGuess);
 
-        // Ä“xƒvƒŒƒC‚·‚é‚©
-        std::cout << "\n‚à‚¤ˆê“xƒvƒŒƒC‚µ‚Ü‚·‚©H (y/n): ";
+        // å†åº¦ãƒ—ãƒ¬ã‚¤ã™ã‚‹ã‹
+        std::cout << "\nã‚‚ã†ä¸€åº¦ãƒ—ãƒ¬ã‚¤ã—ã¾ã™ã‹ï¼Ÿ (y/n): ";
         std::cin >> playAgain;
         std::cout << "\n";
     }
